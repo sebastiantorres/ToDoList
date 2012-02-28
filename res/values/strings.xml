@@ -14,6 +14,6 @@
         <item >Media</item>
         <item >Baja</item>
     </string-array>
-        <string name="stvbtnCancelar">Cancelar </string>
+        <string name="stvbtnCancelar">Cancelador</string>
 
 </resources>
