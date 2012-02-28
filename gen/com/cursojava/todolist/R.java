@@ -8,6 +8,9 @@
 package com.cursojava.todolist;
 
 public final class R {
+    public static final class array {
+        public static final int prioridades=0x7f050000;
+    }
     public static final class attr {
     }
     public static final class drawable {
@@ -19,24 +22,15 @@ public final class R {
         public static final int zoom=0x7f020005;
     }
     public static final class id {
-        public static final int btnaceptar=0x7f050010;
-        public static final int dpFechaFin=0x7f05000e;
-        public static final int dpFechaInicio=0x7f05000b;
-        public static final int etDescripcion=0x7f050005;
-        public static final int etTitulo=0x7f050002;
-        public static final int ivAddTarea=0x7f050011;
-        public static final int linearLayout1=0x7f050000;
-        public static final int linearLayout2=0x7f050003;
-        public static final int linearLayout3=0x7f050006;
-        public static final int linearLayout4=0x7f050009;
-        public static final int linearLayout5=0x7f05000c;
-        public static final int linearLayout6=0x7f05000f;
-        public static final int spPrioridad=0x7f050008;
-        public static final int tvdescripcion=0x7f050004;
-        public static final int tvfechafin=0x7f05000d;
-        public static final int tvfechainicio=0x7f05000a;
-        public static final int tvprioridad=0x7f050007;
-        public static final int tvtitulo=0x7f050001;
+        public static final int btnAceptar=0x7f060006;
+        public static final int btnCancelar=0x7f060005;
+        public static final int dpFechaFin=0x7f060004;
+        public static final int dpFechaInicio=0x7f060003;
+        public static final int etdescripcion=0x7f060001;
+        public static final int ettitulo=0x7f060000;
+        public static final int ivAddTarea=0x7f060007;
+        public static final int listView1=0x7f060008;
+        public static final int spprioridad=0x7f060002;
     }
     public static final class layout {
         public static final int addtarea=0x7f030000;
@@ -47,6 +41,7 @@ public final class R {
         public static final int hello=0x7f040000;
         public static final int stbnaceptar=0x7f040007;
         public static final int strfechafin=0x7f040006;
+        public static final int stvbtnCancelar=0x7f040008;
         public static final int stvdescripcion=0x7f040003;
         public static final int stvfechainicio=0x7f040005;
         public static final int stvprioridad=0x7f040004;
