@@ -1,40 +1,39 @@
 package com.cursojava;
 
-import com.cursojava.todolist.R;
-
-import android.app.ListActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-//import com.cursojava.todolist.R;
+import android.widget.AdapterView;
 
-public class todolistActivity extends ListActivity {
+import com.cursojava.todolist.R;
+public class todolistActivity extends Activity {
+	private TareaDataSource datasource;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-        //setContentView(R.)
-       /* datasource = new TareaDataSource(this);
+        setContentView(R.layout.list);
+        datasource = new TareaDataSource(this);
         datasource.open();
-        List<Tarea> values = datasource.getAllTareas();
-        ArrayAdapter<Tarea> adapter = new ArrayAdapter<Tarea>(this, android.R.layout.simple_list_item_1,values);
-        setListAdapter(adapter);*/
+        AdapterView<Tarea>  adapter =  new AdapterView<Tarea>(this) {
+		};
+        
+        
     }
     
-    public void AddTarea(View view){
-    //	@SuppressWarnings("unchecked")
-	/*	ArrayAdapter<Tarea> adapter =  (ArrayAdapter<Tarea>) getListAdapter();
-    	Tarea tarea = null;
-    	Bundle bundle = getIntent().getExtras();
-    	switch(view.getId()){
-    	case R.id.btnAdd:
-    		    String strTitulo = bundle.getString("txtTitulo");
-    		    String strDescripcion = bundle.getString("txtDescripcion");
-    		    String strFechaInicio = bundle.getString("dpFechaInicio");
-    		    String strFechaFin = bundle.getString("dpFechaFin");
-    		    String strEstado = "1";
-    			tarea = datasource.createTarea(strTitulo, strDescripcion, strFechaInicio, strFechaFin,strEstado);
-    			adapter.add(tarea);
-    			break;
-    	}*/
+    public void showAddTarea(View view){
+    	setContentView(R.layout.addtarea);
+ 
+    }
+    
+    public void saveTarea(){
+    //	
+    	Bundle bundle = getIntent() .getExtras();
+    	String titulo = bundle.getString("etTitulo");
+    	String descripcion = bundle.getString("etDescripcion");
+    	String fechainicio = bundle.getString("dpFechaInicio");
+    	String fechafin  = bundle.getString("dpFechaFin");
+    	String prioridad = bundle.getString("spPrioridad");
+    	datasource.createTarea(titulo, descripcion, fechainicio, fechafin, '1', prioridad);
     }
 }

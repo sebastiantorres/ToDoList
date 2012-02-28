@@ -16,7 +16,7 @@ public class TareaDataSource {
 	private String[] allColumns = {
 			DatabaseHelper.COLUMN_ID, DatabaseHelper.COLUMN_TITULO,
 			DatabaseHelper.COLUMN_DESCRIPCION,DatabaseHelper.COLUMN_FECHAINICIO,
-			DatabaseHelper.COLUMN_ESTADO, DatabaseHelper.COLUMN_FECHAFIN
+			DatabaseHelper.COLUMN_ESTADO, DatabaseHelper.COLUMN_FECHAFIN, DatabaseHelper.COLUMN_PRIORIDAD
 	};
 	
 	public TareaDataSource(Context context){
@@ -31,13 +31,14 @@ public class TareaDataSource {
 		dbHelper.close();
 	}
 
-	public Tarea createTarea(String titulo, String descripcion, String fechainicio, String fechafin, String estado){
+	public Tarea createTarea(String titulo, String descripcion, String fechainicio, String fechafin, String estado,String prioridad){
 		ContentValues values = new ContentValues();
 		values.put(DatabaseHelper.COLUMN_TITULO,titulo);
 		values.put(DatabaseHelper.COLUMN_DESCRIPCION, descripcion);
 		values.put(DatabaseHelper.COLUMN_FECHAINICIO,fechainicio );
 		values.put(DatabaseHelper.COLUMN_FECHAFIN,fechafin);
 		values.put(DatabaseHelper.COLUMN_ESTADO, estado);
+		values.put(DatabaseHelper.COLUMN_PRIORIDAD, prioridad);
 		long insertID = database.insert(DatabaseHelper.TABLE_NAME, null, values);
 		Cursor cursor = database.query(DatabaseHelper.TABLE_NAME,allColumns,DatabaseHelper.COLUMN_ID + " = " + insertID , null, null, null,null);
 		cursor.moveToFirst();
@@ -45,7 +46,7 @@ public class TareaDataSource {
 		
 	}
 	
-	public List<Tarea> getAllTareas(){
+	/*public List<Tarea> getAllTareas(){
 		List<Tarea> tareas= new ArrayList<Tarea>();
 		Cursor cursor = database.query(DatabaseHelper.TABLE_NAME, allColumns, null, null, null, null, null);
 		cursor.moveToFirst();
@@ -57,7 +58,7 @@ public class TareaDataSource {
 		cursor.close();
 		return tareas;
 		
-	}
+	}*/
 	
 	public Tarea cursorToTarea(Cursor cursor){
 			Tarea tarea = new Tarea();
@@ -67,6 +68,7 @@ public class TareaDataSource {
 			tarea.setFechainicio(cursor.getString(3));
 			tarea.setFechafin(cursor.getString(4));
 			tarea.setEstado(cursor.getString(5));
+			tarea.setPrioridad(cursor.getString(6));
 			return tarea;
 		
 	}

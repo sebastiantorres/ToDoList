@@ -7,6 +7,9 @@ public class Tarea {
 	private String fechainicio;
 	private String fechafin;
 	private String estado;
+	private String prioridad;
+	
+	
 	public long getId() {
 		return id;
 	}
@@ -43,6 +46,11 @@ public class Tarea {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	
+	public String getPrioridad() {
+		return prioridad;
+	}
+	public void setPrioridad(String prioridad) {
+		this.prioridad = prioridad;
+	}
 	
 }

@@ -3,5 +3,11 @@
 
     <string name="hello">Hello World, todolistActivity!</string>
     <string name="app_name">Administrador de Tareas</string>
+    <string name="stvtitulo">Titulo</string>
+    <string name="stvdescripcion">Descripcion</string>
+    <string name="stvprioridad">Prioridad:</string>
+    <string name="stvfechainicio">Fecha Inicio:</string>
+    <string name="strfechafin">Fecha fin:</string>
+    <string name="stbnaceptar">Acepter</string>
 
 </resources>
