@@ -1,13 +1,17 @@
 package com.cursojava;
 
-import android.app.Activity;
-import android.content.Context;
+import java.util.List;
+
+import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
-import com.cursojava.todolist.R;
-public class todolistActivity extends Activity {
+
+
+public class todolistActivity extends  ListActivity {
 	private TareaDataSource datasource;
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -15,43 +19,50 @@ public class todolistActivity extends Activity {
         setContentView(R.layout.list);
         datasource = new TareaDataSource(this);
         datasource.open();
+        List<Tarea> values = datasource.getAllTareas();
+
+
+		ArrayAdapter<Tarea> adapter = new ArrayAdapter<Tarea>(this,
+				android.R.layout.simple_list_item_1, values);
+		setListAdapter(adapter);
+	
        
     }
     
-    public void showAddTarea(View view){
-    	setContentView(R.layout.addtarea);
- 
-    }
+   
     
     public void onClick(View view) {
-    	Tarea tarea = null;
-    	String titulo = "HOLA";//bundle.getString("etTitulo");
-    	String descripcion ="HOLA"; // bundle.getString("etDescripcion");
-    	String fechainicio = "HOLA";// bundle.getString("dpFechaInicio");
-    	String fechafin  = "HOLA";// bundle.getString("dpFechaFin");
-    	String prioridad ="HOLA";// bundle.getString("spPrioridad");
-    	
-		switch (view.getId()) {
+    	@SuppressWarnings("unchecked")
+		ArrayAdapter<Tarea> adapter = (ArrayAdapter<Tarea>) getListAdapter();
+		Tarea tarea = null;
+    	switch (view.getId()) {
 				case R.id.ivAddTarea:
-					Toast toast = Toast.makeText(this,"HOLA",100);
-			    	toast.show();
-			    //	tarea = datasource.createTarea(titulo, descripcion, fechainicio, fechafin, "1", prioridad);
-			    	setContentView(R.layout.addtarea);
+					Toast.makeText(this, "Tarea", 100).show();
 
+					/*Intent intent=new Intent();
+					intent.setClass(this,TareaAdd.class );
+					startActivity(intent);*/
 			    	break;
-				case R.id.btnAceptar:
-		    	//	ArrayAdapter<Tarea> adapter = (ArrayAdapter<Tarea>) getListAdapter();
-		    
-		    	datasource.createTarea(titulo, descripcion, fechainicio, fechafin, "1", prioridad);
-		    	datasource.close();
-		    	break;
-				case R.id.btnCancelar:
-			    	mostrarerror(this);
+				case R.id.add:
+					Intent intent=new Intent();
+					intent.setClass(this,TareaAdd.class);
+					startActivity(intent);
+				    	break;
+			   default: 
+			    	Toast.makeText(this, "ENTRE", 100);
 			    	break;
 		}
     }
-    public void mostrarerror(Context context){
-    	Toast.makeText(context, "tarea cread", 100);
-    	//R.id.ettitulo = "algo";
-    }
+    
+    @Override
+	protected void onResume() {
+		datasource.open();
+		super.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+		datasource.close();
+		super.onPause();
+	}
 }

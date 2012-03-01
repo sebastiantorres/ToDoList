@@ -31,7 +31,7 @@ public class TareaDataSource {
 		dbHelper.close();
 	}
 
-	public void createTarea(String titulo, String descripcion, String fechainicio, String fechafin, String estado,String prioridad){
+	public Tarea createTarea(String titulo, String descripcion, String fechainicio, String fechafin, String estado,String prioridad){
 		ContentValues values = new ContentValues();
 		values.put(DatabaseHelper.COLUMN_TITULO,titulo);
 		values.put(DatabaseHelper.COLUMN_DESCRIPCION, descripcion);
@@ -40,9 +40,9 @@ public class TareaDataSource {
 		values.put(DatabaseHelper.COLUMN_ESTADO, estado);
 		values.put(DatabaseHelper.COLUMN_PRIORIDAD, prioridad);
 		long insertID = database.insert(DatabaseHelper.TABLE_NAME, null, values);
-		/*Cursor cursor = database.query(DatabaseHelper.TABLE_NAME,allColumns,DatabaseHelper.COLUMN_ID + " = " + insertID , null, null, null,null);
+		Cursor cursor = database.query(DatabaseHelper.TABLE_NAME,allColumns,DatabaseHelper.COLUMN_ID + " = " + insertID , null, null, null,null);
 		cursor.moveToFirst();
-		return cursorToTarea(cursor);*/
+		return cursorToTarea(cursor);
 		
 	}
 	

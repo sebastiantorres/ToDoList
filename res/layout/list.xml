@@ -10,9 +10,15 @@
         android:layout_height="wrap_content"
         android:onClick="onClick"
         android:src="@drawable/add" android:clickable="true"/>
+     <Button
+            android:id="@+id/add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add New" 
+            android:onClick="onClick"/>
 
     <ListView
-        android:id="@+id/listView1"
+        android:id="@android:id/list"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" >
     </ListView>

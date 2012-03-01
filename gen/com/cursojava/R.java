@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.cursojava.todolist;
+package com.cursojava;
 
 public final class R {
     public static final class array {
@@ -22,6 +22,7 @@ public final class R {
         public static final int zoom=0x7f020005;
     }
     public static final class id {
+        public static final int add=0x7f060008;
         public static final int btnAceptar=0x7f060006;
         public static final int btnCancelar=0x7f060005;
         public static final int dpFechaFin=0x7f060004;
@@ -29,7 +30,6 @@ public final class R {
         public static final int etdescripcion=0x7f060001;
         public static final int ettitulo=0x7f060000;
         public static final int ivAddTarea=0x7f060007;
-        public static final int listView1=0x7f060008;
         public static final int spprioridad=0x7f060002;
     }
     public static final class layout {
