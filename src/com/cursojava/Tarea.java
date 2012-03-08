@@ -53,4 +53,7 @@ public class Tarea {
 		this.prioridad = prioridad;
 	}
 	
+	public String toString(){
+		return titulo+ " - " +prioridad;
+	}
 }

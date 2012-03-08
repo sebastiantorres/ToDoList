@@ -9,11 +9,13 @@
     <string name="stvfechainicio">Fecha Inicio:</string>
     <string name="strfechafin">Fecha fin:</string>
     <string name="stbnaceptar">Aceptar</string>
+    
     <string-array name="prioridades">
         <item >Alta</item>
         <item >Media</item>
         <item >Baja</item>
     </string-array>
-        <string name="stvbtnCancelar">Cancelador</string>
-
+        <string name="stvbtnCancelar">Cancelar</string>
+<color name="listcolor">#94A65D</color>
+	<color name="black">#fff</color>
 </resources>

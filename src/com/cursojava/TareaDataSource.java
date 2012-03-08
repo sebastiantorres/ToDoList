@@ -14,7 +14,7 @@ public class TareaDataSource {
 	private SQLiteDatabase database;
 	private DatabaseHelper dbHelper;
 	private String[] allColumns = {
-			DatabaseHelper.COLUMN_ID, DatabaseHelper.COLUMN_TITULO,
+			DatabaseHelper.COLUMN_ID,DatabaseHelper.COLUMN_TITULO,
 			DatabaseHelper.COLUMN_DESCRIPCION,DatabaseHelper.COLUMN_FECHAINICIO,
 			DatabaseHelper.COLUMN_ESTADO, DatabaseHelper.COLUMN_FECHAFIN, DatabaseHelper.COLUMN_PRIORIDAD
 	};
@@ -39,6 +39,7 @@ public class TareaDataSource {
 		values.put(DatabaseHelper.COLUMN_FECHAFIN,fechafin);
 		values.put(DatabaseHelper.COLUMN_ESTADO, estado);
 		values.put(DatabaseHelper.COLUMN_PRIORIDAD, prioridad);
+		
 		long insertID = database.insert(DatabaseHelper.TABLE_NAME, null, values);
 		Cursor cursor = database.query(DatabaseHelper.TABLE_NAME,allColumns,DatabaseHelper.COLUMN_ID + " = " + insertID , null, null, null,null);
 		cursor.moveToFirst();
@@ -46,18 +47,33 @@ public class TareaDataSource {
 		
 	}
 	
-	public List<Tarea> getAllTareas(){
-		List<Tarea> tareas= new ArrayList<Tarea>();
-		Cursor cursor = database.query(DatabaseHelper.TABLE_NAME, allColumns, null, null, null, null, null);
+	public void deleteTarea(Tarea tarea) {
+		long id = tarea.getId();
+		System.out.println("Se borrara la tarea con el  id: " + id);
+		database.delete(DatabaseHelper.TABLE_NAME, DatabaseHelper.COLUMN_ID
+				+ " = " + id, null);
+	}
+
+	public List<Tarea> getAllTareas() {
+		List<Tarea> tareas = new ArrayList<Tarea>();
+		Cursor cursor = database.query(DatabaseHelper.TABLE_NAME,
+				allColumns, null, null, null, null, null);
 		cursor.moveToFirst();
-		while(!cursor.isAfterLast()){
+		while (!cursor.isAfterLast()) {
 			Tarea tarea = cursorToTarea(cursor);
 			tareas.add(tarea);
 			cursor.moveToNext();
 		}
+		// Make sure to close the cursor
 		cursor.close();
 		return tareas;
-		
+	}
+	
+	public Cursor fetchAllTareas() {
+		return database.query(DatabaseHelper.TABLE_NAME, new String[] { DatabaseHelper.COLUMN_ID,DatabaseHelper.COLUMN_TITULO,
+				DatabaseHelper.COLUMN_DESCRIPCION,DatabaseHelper.COLUMN_FECHAINICIO,
+				DatabaseHelper.COLUMN_ESTADO, DatabaseHelper.COLUMN_FECHAFIN, DatabaseHelper.COLUMN_PRIORIDAD }, null, null, null,
+				null, null);
 	}
 	
 	public Tarea cursorToTarea(Cursor cursor){
